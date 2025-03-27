@@ -10,6 +10,8 @@
 #include <common.h>
 #include <command.h>
 #include <stdio_dev.h>
+#include <video.h>
+#include <dm/uclass.h>
 
 extern void _do_coninfo (void);
 static int do_coninfo(struct cmd_tbl *cmd, int flag, int argc,
