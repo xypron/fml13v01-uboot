@@ -5,6 +5,7 @@
 
 /dts-v1/;
 
+#include "binman.dtsi"
 #include "jh7110.dtsi"
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/pinctrl/pinctrl-starfive-jh7110.h>

@@ -4,7 +4,6 @@
  * Copyright (C) 2022 Hal Feng <hal.feng@starfivetech.com>
  */
 
-/dts-v1/;
 #include "jh7110_clk.dtsi"
 #include <dt-bindings/reset/starfive-jh7110.h>
 #include <dt-bindings/clock/starfive-jh7110-clkgen.h>
