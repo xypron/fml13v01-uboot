@@ -45,10 +45,10 @@ static void iotrace_writel(ulong value, void *ptr)
 void saif_set_reg(uint32_t addr,uint32_t data,uint32_t shift,uint32_t mask)
 {
     uint32_t tmp;
-    tmp = readl(addr);
+    tmp = readl((void *)addr);
     tmp &= ~mask;
     tmp |= (data<<shift) & mask;
-    writel(tmp,addr);
+    writel(tmp, (void *)addr);
 }
 
 #define  U0_DOM_VOUT_CRG__SAIF_BD_APBS__BASE_ADDR					0x00295C0000
