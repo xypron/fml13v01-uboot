@@ -427,7 +427,7 @@ static void jh7110_gpio_init(void)
 	/* Switch gpio init */
 	SYS_IOMUX_DOEN(56, 0);
 	SYS_IOMUX_DOUT(56, 0);
-	writel(0, 0x13040200);
+	writel(0, (void *)0x13040200);
 }
 
 int board_init(void)
