@@ -1,0 +1,51 @@
+#!/usr/bin/make -f
+
+# Needed for reproducible build
+include /usr/share/dpkg/pkg-info.mk
+
+# Enable verbose build by default, disable when terse is specified.
+ifeq (,$(filter terse,$(DEB_BUILD_OPTIONS)))
+VERBOSE=1
+else
+VERBOSE=0
+endif
+
+%:
+	dh $@
+
+override_dh_auto_clean:
+	make mrproper
+	rm -rf build*
+
+override_dh_auto_configure:
+
+override_dh_auto_build:
+	# Build for FML33V01
+	make O=build_fml13v01/ starfive_visionfive2_defconfig
+	CROSS_COMPILE=riscv64-linux-gnu- \
+	OPENSBI=/usr/lib/riscv64-linux-gnu/opensbi/generic/fw_dynamic.bin \
+	make O=build_fml13v01/ -j$(nproc)
+	mkimage -T sfspl -d build_fml13v01/spl/u-boot-spl.bin \
+	build_fml13v01/spl/u-boot-spl.bin.normal.out
+	cd build_fml13v01/ && \
+	../tools/binman/binman  \
+	--toolpath ./tools  build \
+	-u \
+	-d arch/riscv/dts/starfive_visionfive2.dtb \
+	-O . \
+	-m \
+	--allow-missing \
+	-I . \
+	-I .. \
+	-I ../board/starfive/visionfive2 \
+	-I arch/riscv/dts \
+	-a of-list="starfive_visionfive2" \
+	-a opensbi-path=/usr/lib/riscv64-linux-gnu/opensbi/generic/fw_dynamic.bin \
+	-a default-dt="starfive_visionfive2" \
+	-a scp-path= \
+	-a spl-bss-pad= \
+	-a tpl-bss-pad=1 \
+	-a spl-dtb=y \
+	-a tpl-dtb=
+
+override_dh_auto_test:

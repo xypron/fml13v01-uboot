@@ -1,0 +1,2 @@
+build_fml13v01/spl/u-boot-spl.bin.normal.out usr/lib/u-boot-fml13v01
+build_fml13v01/u-boot.itb usr/lib/u-boot-fml13v01

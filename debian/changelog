@@ -1,0 +1,11 @@
+u-boot-fml13v01 (2021.10-306-g3ef19239b4a-0ubuntu2~ppa1) noble; urgency=medium
+
+  * Fix build failures
+
+ -- Heinrich Schuchardt <heinrich.schuchardt@canonical.com>  Fri, 28 Mar 2025 11:15:35 +0100
+
+u-boot-fml13v01 (2021.10-306-g3ef19239b4a-0ubuntu1) noble; urgency=medium
+
+  * Initial packaging
+
+ -- Heinrich Schuchardt <heinrich.schuchardt@canonical.com>  Fri, 28 Mar 2025 11:11:35 +0100

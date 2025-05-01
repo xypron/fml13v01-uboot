@@ -1,0 +1,25 @@
+Installation
+============
+
+On SD-card
+----------
+
+u-boot-spl.bin.normal.out must be copied to a partition with
+partition type GUID 2E54B353-1271-4842-806F-E436D6AF6985.
+
+.. code-block::
+
+    sudo dd if=u-boot.itb of=/dev/sdX1 bs=1M conv=fsync
+
+Replace /dev/sdx1 with the relevant partition on your SD-card.
+
+u-boot.itb must be copied to partition 2.
+
+.. code-block::
+
+    sudo dd if=u-boot.itb of=/dev/sdX2 bs=1M conv=fsync
+
+Replace /dev/sdX by the actual device representing your SD-card.
+
+Please, be check the device name carefully to avoid overwriting
+your operating system.
